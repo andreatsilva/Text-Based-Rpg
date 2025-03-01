@@ -11,9 +11,12 @@ struct Player {
 	
 	string name;
 	string playerClass;
+	string location;
 	int health;
 	int attackPower;
 };
+
+
 
 void Menu() {
 
@@ -69,17 +72,42 @@ void characterCreation(Player &player){
 }
 
 
-void  Class() {
+void  explore(Player &player) {
 
+	vector<string> locations = { "Forest", "Cave", "village", "Castle" };
+	cout << "\nChoose where to go: \n";
+	
+	for (int i = 0; i < locations.size(); i++) {
+		cout << i + 1 << ". " << locations[i] << endl;
+	}
 
+	int choice;
+	while (true) {
+		cout << "Choose a location (1- " << locations.size() << "): ";
+		cin >> choice;
+
+		if (cin.fail() || choice < 1 || choice >> locations.size()) {
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+		else {
+			break;
+		}
+	}
+
+	player.location = locations[choice - 1];
+	cout << "You are in the " << player.location << "!\n";
 }
 
-//
+
+
+
+//Main function
 int main() {
 
 	Player player;
+;
 	int choice;
-
 	do {
 		Menu();
 		cout << "Enter Choice";
@@ -88,6 +116,7 @@ int main() {
 		switch (choice) {
 			case 1:
 				characterCreation(player);
+				explore(player);
 				break;
 			case 2:
 				cout << "Load Not implemented";
@@ -103,4 +132,5 @@ int main() {
 		}
 	} while (choice != 4);
 	return 0;
+
 }
