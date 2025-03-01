@@ -69,15 +69,38 @@ void characterCreation(Player &player){
 }
 
 
-
 void  Class() {
 
 
 }
 
 //
-void main() {
+int main() {
 
+	Player player;
+	int choice;
 
+	do {
+		Menu();
+		cout << "Enter Choice";
+		cin >> choice;
+
+		switch (choice) {
+			case 1:
+				characterCreation(player);
+				break;
+			case 2:
+				cout << "Load Not implemented";
+				break;		
+			case 3:
+
+				cout << "Save not implemented";
+				break;
+			case 4:
+
+				cout << "not implemented";
+				break;
+		}
+	} while (choice != 4);
+	return 0;
 }
-
